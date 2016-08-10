@@ -1,0 +1,6 @@
+Name: ${project}
+Description: c
+Version: ${version}
+URL:
+Cflags: -I${includedir}
+Libs: -L${libdir} -lflush

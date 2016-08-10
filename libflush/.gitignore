@@ -1,0 +1,33 @@
+# build files
+*.o
+*.do
+*.gcda
+*.gcno
+*.info
+*.pc
+*.sw[a-z]
+*.diff
+
+# build dirs
+.depend
+gcov/
+doc/_build
+
+# binaries
+*.a
+*.so*
+
+# version file
+libflush/version.h
+
+# development files
+.clang_complete
+.lvimrc
+.ropeproject
+.frama-c
+compile_commands.json
+*.log
+
+# android files
+obj/
+libs/
