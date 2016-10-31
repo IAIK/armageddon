@@ -202,7 +202,7 @@ main(int argc, char* argv[])
   }
 
   /* Initialize libflush */
-  libflush_session_args_t args;
+  libflush_session_args_t args = { 0 };
   args.bind_to_cpu = thread_cpu;
   libflush_session_t* libflush_session;
   if (libflush_init(&libflush_session, &args) == false) {
