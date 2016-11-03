@@ -1,0 +1,10 @@
+build/
+logs/
+_tmp/
+.ropeproject
+*.db
+*.csv
+*.yml
+*.pyc
+*.egg-info
+__pycache__
