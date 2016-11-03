@@ -1,0 +1,35 @@
+# build files
+*.o
+*.do
+*.gcda
+*.gcno
+*.info
+*.pc
+*.sw[a-z]
+*.pyc
+
+# dist files
+template_attacks-*.tar.gz
+
+# patch files
+*.diff
+*.patch
+
+# build dirs
+.depend
+.tx
+build/
+gcov/
+doc/_build
+
+# version file
+version.h
+.version-checks/
+
+# development files
+.clang_complete
+.lvimrc
+.ropeproject
+.frama-c
+compile_commands.json
+*.log
