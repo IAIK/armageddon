@@ -15,6 +15,7 @@ The [ARMageddon: Cache Attacks on Mobile Devices](https://www.usenix.org/confere
 | [libflush](libflush) | Library to build cross-platform cache attacks |
 | [Cache Template Attacks](cache_template_attacks) | Cross-platform implementation of Cache Template Attacks |
 | [Eviction Strategy Evaluator](eviction_strategy_evaluator) | Find eviction strategy for your device |
+| [Input Simulator](input_simulator) | Simple tool to simulate touch events |
 
 ## References
 
