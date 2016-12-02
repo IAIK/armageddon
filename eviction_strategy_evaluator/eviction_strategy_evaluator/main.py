@@ -12,8 +12,8 @@ from .build import Builder
 from .executor import Executor
 from .evaluate import evaluate_strategy_logfile
 
-from libflush_eviction_evaluator.config import parse_device_configuration
-from libflush_eviction_evaluator.config import parse_configuration
+from eviction_strategy_evaluator.config import parse_device_configuration
+from eviction_strategy_evaluator.config import parse_configuration
 
 def run_strategy(ctx, number_of_measurements, eviction_counter, number_of_accesses_in_loop,
                  different_addresses_in_loop, step_size, mirroring):
