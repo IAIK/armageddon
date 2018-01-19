@@ -22,7 +22,7 @@
 
 #if defined(__ARM_ARCH_7A__)
 #include "armv7/libflush.h"
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
 #include "armv8/libflush.h"
 #elif defined(__i386__) || defined(__x86_64__)
 #include "x86/libflush.h"
@@ -74,7 +74,7 @@ libflush_init(libflush_session_t** session, libflush_session_args_t* args)
   /* Initialize architecture */
 #if defined(__ARM_ARCH_7A__)
   arm_v7_init(*session, args);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_init(*session, args);
 #endif
 
@@ -111,7 +111,7 @@ libflush_terminate(libflush_session_t* session)
   /* Terminate architecture */
 #if defined(__ARM_ARCH_7A__)
   arm_v7_terminate(session);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_terminate(session);
 #endif
 
@@ -128,7 +128,7 @@ libflush_flush(libflush_session_t* session, void* address)
 
 #if USE_EVICTION == 1
   libflush_eviction_evict(session, address);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_flush(address);
 #elif defined(__i386__) || defined(__x86_64__)
   x86_flush(address);
@@ -146,7 +146,7 @@ libflush_flush_time(libflush_session_t* session, void* address)
 
 #if USE_EVICTION == 1
   libflush_eviction_evict(session, address);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_flush(address);
 #elif defined(__i386__) || defined(__x86_64__)
   x86_flush(address);
@@ -179,7 +179,7 @@ libflush_prefetch(libflush_session_t* session, void* address)
 #if defined(__ARM_ARCH_7A__)
   arm_v7_prefetch(address);
   libflush_memory_barrier();
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_prefetch(address);
   libflush_memory_barrier();
 #elif defined(__i386__) || defined(__x86_64__)
@@ -199,7 +199,7 @@ libflush_prefetch_time(libflush_session_t* session, void* address)
 #if defined(__ARM_ARCH_7A__)
   arm_v7_prefetch(address);
   libflush_memory_barrier();
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_prefetch(address);
   libflush_memory_barrier();
 #elif defined(__i386__) || defined(__x86_64__)
@@ -229,7 +229,7 @@ libflush_get_timing(libflush_session_t* session)
 #elif TIME_SOURCE == TIME_SOURCE_REGISTER
 #if defined(__ARM_ARCH_7A__)
   result = arm_v7_get_timing();
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   result = arm_v8_get_timing();
 #elif defined(__i386__) || defined(__x86_64__)
   result = x86_get_timing();
@@ -283,7 +283,7 @@ libflush_reset_timing(libflush_session_t* session)
 #elif TIME_SOURCE == TIME_SOURCE_REGISTER
 #if defined(__ARM_ARCH_7A__)
   arm_v7_reset_timing(session->performance_register_div64);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_reset_timing();
 #endif
 #endif
@@ -295,7 +295,7 @@ inline void
 libflush_access_memory(void *address) {
 #if defined(__ARM_ARCH_7A__)
   arm_v7_access_memory(address);
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_access_memory(address);
 #elif defined(__i386__) || defined(__x86_64__)
   x86_access_memory(address);
@@ -338,7 +338,7 @@ libflush_memory_barrier()
 {
 #if defined(__ARM_ARCH_7A__)
   arm_v7_memory_barrier();
-#elif defined(__ARM_ARCH_8A__)
+#elif defined(__aarch64__)
   arm_v8_memory_barrier();
 #elif defined(__i386__) || defined(__x86_64__)
   x86_memory_barrier();

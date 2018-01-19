@@ -19,7 +19,6 @@ endif
 
 ifeq "${ARCH}" "armv8"
 	SOURCE += $(wildcard ${PROJECT}/armv8/*.c)
-	CPPFLAGS += -D__ARM_ARCH_8A__
 	include config-arm64.mk
 endif
 
