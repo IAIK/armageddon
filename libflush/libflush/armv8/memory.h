@@ -6,7 +6,7 @@
 inline void
 arm_v8_access_memory(void* pointer)
 {
-  volatile uint32_t value;
+  volatile uint64_t value;
   asm volatile ("LDR %0, [%1]\n\t"
       : "=r" (value)
       : "r" (pointer)

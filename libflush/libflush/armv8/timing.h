@@ -29,7 +29,7 @@ arm_v8_get_timing(void)
 inline void
 arm_v8_timing_init(void)
 {
-  uint32_t value = 0;
+  uint64_t value = 0;
 
   /* Enable Performance Counter */
   asm volatile("MRS %0, PMCR_EL0" : "=r" (value));
@@ -47,8 +47,8 @@ arm_v8_timing_init(void)
 inline void
 arm_v8_timing_terminate(void)
 {
-  uint32_t value = 0;
-  uint32_t mask = 0;
+  uint64_t value = 0;
+  uint64_t mask = 0;
 
   /* Disable Performance Counter */
   asm volatile("MRS %0, PMCR_EL0" : "=r" (value));
@@ -68,7 +68,7 @@ arm_v8_timing_terminate(void)
 inline void
 arm_v8_reset_timing(void)
 {
-  uint32_t value = 0;
+  uint64_t value = 0;
   asm volatile("MRS %0, PMCR_EL0" : "=r" (value));
   value |= ARMV8_PMCR_C; /* Cycle counter reset */
   asm volatile("MSR PMCR_EL0, %0" : : "r" (value));
