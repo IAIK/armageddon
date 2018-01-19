@@ -233,7 +233,11 @@ libflush_get_timing(libflush_session_t* session)
   result = arm_v8_get_timing();
 #elif defined(__i386__) || defined(__x86_64__)
   result = x86_get_timing();
+#else
+#error No time register known for current arch
 #endif
+#else
+#error Invalid time source
 #endif
 
   libflush_memory_barrier();
