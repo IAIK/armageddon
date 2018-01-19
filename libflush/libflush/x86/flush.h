@@ -3,7 +3,7 @@
 #ifndef X86_FLUSH_H
 #define X86_FLUSH_H
 
-extern inline void x86_flush(void* address)
+static inline void x86_flush(void* address)
 {
   asm volatile ("clflush 0(%0)"
     :

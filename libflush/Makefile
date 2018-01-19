@@ -7,18 +7,15 @@ include common.mk
 SOURCE = $(wildcard ${PROJECT}/*.c ${PROJECT}/eviction/*.c)
 
 ifeq "${ARCH}" "x86"
-	SOURCE += $(wildcard ${PROJECT}/x86/*.c)
 	LDFLAGS += -pthread
 endif
 
 ifeq "${ARCH}" "armv7"
-	SOURCE += $(wildcard ${PROJECT}/armv7/*.c)
 	USE_EVICTION = 1
 	include config-arm.mk
 endif
 
 ifeq "${ARCH}" "armv8"
-	SOURCE += $(wildcard ${PROJECT}/armv8/*.c)
 	CPPFLAGS += -D__ARM_ARCH_8A__
 	include config-arm64.mk
 endif

@@ -3,7 +3,7 @@
 #ifndef ARM_v8_MEMORY_H
 #define ARM_v8_MEMORY_H
 
-inline void
+static inline void
 arm_v8_access_memory(void* pointer)
 {
   volatile uint32_t value;
@@ -13,14 +13,14 @@ arm_v8_access_memory(void* pointer)
       );
 }
 
-inline void
+static inline void
 arm_v8_memory_barrier(void)
 {
   asm volatile ("DSB SY");
   asm volatile ("ISB");
 }
 
-inline void
+static inline void
 arm_v8_prefetch(void* pointer)
 {
   asm volatile ("PRFM PLDL3KEEP, [%x0]" :: "p" (pointer));

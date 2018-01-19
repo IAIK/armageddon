@@ -16,7 +16,7 @@
 
 #define ARMV8_PMCNTENSET_EL0_EN (1 << 31) /* Performance Monitors Count Enable Set register */
 
-inline uint64_t
+static inline uint64_t
 arm_v8_get_timing(void)
 {
   uint64_t result = 0;
@@ -26,7 +26,7 @@ arm_v8_get_timing(void)
   return result;
 }
 
-inline void
+static inline void
 arm_v8_timing_init(void)
 {
   uint32_t value = 0;
@@ -44,7 +44,7 @@ arm_v8_timing_init(void)
   asm volatile("MSR PMCNTENSET_EL0, %0" : : "r" (value));
 }
 
-inline void
+static inline void
 arm_v8_timing_terminate(void)
 {
   uint32_t value = 0;
@@ -65,7 +65,7 @@ arm_v8_timing_terminate(void)
   asm volatile("MSR PMCNTENSET_EL0, %0" : : "r" (value & ~mask));
 }
 
-inline void
+static inline void
 arm_v8_reset_timing(void)
 {
   uint32_t value = 0;
