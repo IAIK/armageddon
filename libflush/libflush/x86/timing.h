@@ -10,56 +10,51 @@
 extern inline uint64_t
 x86_get_timing(void)
 {
-  uint64_t result = 0;
-  uint64_t d = 0;
+    uint32_t lo = 0;
+    uint32_t hi = 0;
 
-  asm volatile ("rdtsc" : "=a" (result), "=d" (d));
-  result = (d << 32) | result;
+  asm volatile ("rdtsc" : "=a" (lo), "=d" (hi));
 
-  return result;
+    return  (((int64_t)hi) << 32) | lo;
 }
 
 extern inline uint64_t
 x86_get_timing_start(void)
 {
-  uint64_t result = 0;
-  uint64_t d = 0;
+    uint32_t lo = 0;
+    uint32_t hi = 0;
 
     asm volatile ("mfence\n\t"
     "RDTSCP\n\t"
-    "mov %%rdx, %0\n\t"
-    "mov %%rax, %1\n\t"
-    "xor %%rax, %%rax\n\t"
+    "mov %%edx, %0\n\t"
+    "mov %%eax, %1\n\t"
+    "xor %%eax, %%eax\n\t"
     "CPUID\n\t"
-    : "=r" (d), "=r" (result)
+    : "=r" (hi), "=r" (lo)
     :
-    : "%rax", "%rbx", "%rcx", "%rdx");
+    : "%eax", "%ebx", "%ecx", "%edx");
 
-  result = (d << 32) | result;
-
-  return result;
+  return  (((int64_t)hi) << 32) | lo;
 }
 
 extern inline  uint64_t
 x86_get_timing_end(void)
 {
-  uint64_t result = 0;
-  uint64_t d = 0;
+  uint32_t lo = 0;
+  uint32_t hi = 0;
 
   asm volatile(
-    "xor %%rax, %%rax\n\t"
+    "xor %%eax, %%eax\n\t"
     "CPUID\n\t"
     "RDTSCP\n\t"
-    "mov %%rdx, %0\n\t"
-    "mov %%rax, %1\n\t"
+    "mov %%edx, %0\n\t"
+    "mov %%eax, %1\n\t"
     "mfence\n\t"
-  : "=r" (d), "=r" (result)
+  : "=r" (hi), "=r" (lo)
   :
-  : "%rax", "%rbx", "%rcx", "%rdx");
+  : "%eax", "%ebx", "%ecx", "%edx");
 
-  result = (d << 32) | result;
-
-  return result;
+    return  (((int64_t)hi) << 32) | lo;
 }
 
 #endif  /*X86_TIMING_H*/
