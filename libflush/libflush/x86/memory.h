@@ -6,7 +6,7 @@
 extern inline void
 x86_access_memory(void* pointer)
 {
-  asm volatile ("movq (%0), %%rax\n"
+  asm volatile ("movl (%0), %%eax\n"
       :
       : "c" (pointer)
       : "rax");
