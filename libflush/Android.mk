@@ -13,11 +13,9 @@ LOCAL_SRC_FILES := $(wildcard libflush/*.c)
 LOCAL_SRC_FILES += $(wildcard libflush/eviction/*.c)
 
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-LOCAL_SRC_FILES += $(wildcard libflush/armv7/*.c)
 USE_EVICTION = 1
 endif
 ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
-LOCAL_SRC_FILES += $(wildcard libflush/armv8/*.c)
 LOCAL_CFLAGS += -D__ARM_ARCH_8A__
 endif
 

@@ -18,7 +18,7 @@
 
 #define ARMV7_PMOVSR_C     (1 << 31) /* Overflow bit */
 
-inline uint64_t
+static inline uint64_t
 arm_v7_get_timing(void)
 {
   uint32_t result = 0;
@@ -28,7 +28,7 @@ arm_v7_get_timing(void)
   return result;
 }
 
-inline void
+static inline void
 arm_v7_reset_timing(bool div64)
 {
   uint32_t value = 0;
@@ -46,7 +46,7 @@ arm_v7_reset_timing(bool div64)
   asm volatile ("MCR p15, 0, %0, c9, c12, 0" :: "r" (value));
 }
 
-inline void
+static inline void
 arm_v7_timing_init(bool div64)
 {
   uint32_t value = 0;
@@ -83,7 +83,7 @@ arm_v7_timing_init(bool div64)
   asm volatile ("MCR p15, 0, %0, c9, c12, 3" :: "r" (value));
 }
 
-inline void
+static inline void
 arm_v7_timing_terminate(void)
 {
   uint32_t value = 0;

@@ -7,7 +7,7 @@
 
 #include "memory.h"
 
-extern inline uint64_t
+static inline uint64_t
 x86_get_timing(void)
 {
   uint64_t result = 0;
@@ -19,7 +19,7 @@ x86_get_timing(void)
   return result;
 }
 
-extern inline uint64_t
+static inline uint64_t
 x86_get_timing_start(void)
 {
   uint64_t result = 0;
@@ -40,7 +40,7 @@ x86_get_timing_start(void)
   return result;
 }
 
-extern inline  uint64_t
+static inline  uint64_t
 x86_get_timing_end(void)
 {
   uint64_t result = 0;

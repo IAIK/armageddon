@@ -3,7 +3,7 @@
 #ifndef X86_MEMORY_H
 #define X86_MEMORY_H
 
-extern inline void
+static inline void
 x86_access_memory(void* pointer)
 {
   asm volatile ("movq (%0), %%rax\n"
@@ -12,13 +12,13 @@ x86_access_memory(void* pointer)
       : "rax");
 }
 
-extern inline void
+static inline void
 x86_memory_barrier(void)
 {
   asm volatile ("mfence");
 }
 
-extern inline void
+static inline void
 x86_prefetch(void* pointer)
 {
   asm volatile ("prefetchnta (%0)" :: "r" (pointer));
